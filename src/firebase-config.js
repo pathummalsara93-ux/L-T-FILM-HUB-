@@ -7,8 +7,8 @@ const firebaseConfig = {
   projectId: "film-hub-official",
   storageBucket: "film-hub-official.firebasestorage.app",
   messagingSenderId: "863017368992",
-  appId: "1:968673332926:web:6789623a796a769924d8ef",
-  measurementId: "G-WX4SKF94PX"
+  appId: "1:863017368992:web:80ee942d60ba64b5de78c5",
+  measurementId: "G-W77J8NFFR7"
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);

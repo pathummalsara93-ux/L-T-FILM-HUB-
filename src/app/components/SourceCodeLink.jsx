@@ -3,7 +3,7 @@ const SourceCodeLink = () => {
     <>
       <a
         // className="fixed ml-9 left-0"
-        href="https://github.com/chatforall"
+        href="https://github.com/pathum-Malsara"
         target="_blank"
       >
         <svg

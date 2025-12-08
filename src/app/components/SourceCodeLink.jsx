@@ -17,7 +17,7 @@ const SourceCodeLink = () => {
       </a>
       <a
         className="hidden absolute sm:block left-12 bg-[#5f7fff] dark:bg-gray-200 p-1 rounded-2xl"
-        href="https://buymeacoffee.com/pathum"
+        href="https:/github.com/pathum"
         target="_blank"
       >
       <svg

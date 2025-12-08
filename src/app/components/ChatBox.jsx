@@ -62,7 +62,7 @@ const ChatBox = () => {
             Greetings and welcome to ChatForAll, a simple online chat
             application. There is no need to log in. Use the clipboard button to
             quickly copy the messages. Messages that are older than two days
-            will be automatically removed. Happy Chatting🚀
+            will be automatically removed. Happy Chatting🚀 හායි
           </AdminMessage>
           {messages?.map((message) => (
             <Message key={message.id} message={message} />

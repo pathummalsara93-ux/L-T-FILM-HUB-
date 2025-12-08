@@ -6,7 +6,7 @@ const firebaseConfig = {
   authDomain: "film-hub-official.firebaseapp.com",
   projectId: "film-hub-official",
   storageBucket: "film-hub-official.firebasestorage.app",
-  messagingSenderId: "968673332926",
+  messagingSenderId: "863017368992",
   appId: "1:968673332926:web:6789623a796a769924d8ef",
   measurementId: "G-WX4SKF94PX"
 };

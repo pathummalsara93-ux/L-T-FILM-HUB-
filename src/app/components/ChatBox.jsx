@@ -59,10 +59,8 @@ const ChatBox = () => {
       ) : (
         <div className="p-5 mb-16 text-[#3b3424] dark:text-[#cad3f5] flex flex-col items-center">
           <AdminMessage>
-            Greetings and welcome to ChatForAll, a simple online chat
-            application. There is no need to log in. Use the clipboard button to
-            quickly copy the messages. Messages that are older than two days
-            will be automatically removed. Happy Chatting🚀 හායි
+           ඔයාලට ගන්න ඕන Film එකේ නම හරියටම ටයිප් කරලා එවන්න
+           පසුව එය ගෘප් එකට අවම 48 Hour තුළට upload වෙනවා🎥
           </AdminMessage>
           {messages?.map((message) => (
             <Message key={message.id} message={message} />

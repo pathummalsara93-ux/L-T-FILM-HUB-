@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyDsMM3Z-tGNfgZTlAO9Tr21nlyhZL8jUuk",
   authDomain: "film-hub-official.firebaseapp.com",
-  projectId: "chatforall-86963",
+  projectId: "film-hub-official",
   storageBucket: "chatforall-86963.appspot.com",
   messagingSenderId: "968673332926",
   appId: "1:968673332926:web:6789623a796a769924d8ef",

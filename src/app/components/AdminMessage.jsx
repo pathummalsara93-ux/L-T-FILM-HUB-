@@ -21,7 +21,7 @@ const AdminMessage = (props) => {
         <div className="flex flex-row gap-1">
           <a
             className="sm:hidden border-solid border-[#8839ef] dark:border-[#f9e2af] border p-0.5 rounded-2xl"
-            href="https://buymeacoffee.com/sameemul_haque"
+            href="https://buymeacoffee.com/smemul_haque"
             target="_blank"
           >
             <svg

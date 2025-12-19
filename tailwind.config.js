@@ -5,15 +5,30 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
+      /* existing background images (unchanged) */
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+
+      /* ✅ NEW: gradient animation */
+      keyframes: {
+        gradientMove: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
+      },
+
+      animation: {
+        gradient: "gradientMove 8s ease infinite",
+        "gradient-slow": "gradientMove 12s ease infinite",
+      },
     },
   },
   plugins: [],
-  darkMode: "class",
 };

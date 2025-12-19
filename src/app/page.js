@@ -9,7 +9,7 @@ export default function Home() {
       <div className="flex justify-between items-center m-3">
         <SourceCodeLink />
         <h1 className="text-center text-[#6176dc] dark:text-[#f9e2af] font-bold text-4xl">
-          ChatForAll
+          ChatForAllA
         </h1>
         <ThemeSwitch />
       </div>

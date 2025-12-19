@@ -17,15 +17,15 @@ export default function Home() {
       {/* Header */}
       <div
         className="
-          flex justify-between items-center
           m-3 p-[2px] rounded-2xl
+          bg-[length:300%_300%]
           bg-gradient-to-r from-indigo-500 via-sky-400 to-indigo-500
-          animate-[spin_10s_linear_infinite]
+          animate-[gradientMove_8s_ease_infinite]
         "
       >
         <div
           className="
-            flex justify-between items-center w-full
+            flex justify-between items-center
             p-4 rounded-2xl
             bg-white/70 dark:bg-white/5
             backdrop-blur-md
@@ -53,12 +53,13 @@ export default function Home() {
         <DeleteMessages />
       </div>
 
-      {/* Chat Box with Animated Border */}
+      {/* Chat Box */}
       <div
         className="
           m-3 p-[2px] rounded-2xl
+          bg-[length:300%_300%]
           bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500
-          animate-[spin_8s_linear_infinite]
+          animate-[gradientMove_10s_ease_infinite]
         "
       >
         <div

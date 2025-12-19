@@ -5,8 +5,8 @@ import { Providers } from "./components/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  applicationName: 'ChatForAll',
-  title: "ChatForAll",
+  applicationName: 'MOVIE-REQUEST',
+  title: "MOVIE-REQUEST",
   description:
     "A simple realtime chat application without authentication created using Next.js and Firebase",
   generator: "Next.js",

@@ -25,7 +25,7 @@ module.exports = {
       },
 
       animation: {
-        gradient: "gradientMove 8s ease infinite",
+        gradient: "gradientMove 6s ease infinite",
         "gradient-slow": "gradientMove 9s ease infinite",
       },
     },

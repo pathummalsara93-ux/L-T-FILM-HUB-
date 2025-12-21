@@ -1,17 +1,32 @@
+"use client";
+
 const SourceCodeLink = () => {
   return (
     <>
+      {/* Floating WhatsApp Button */}
       <a
         href="https://chat.whatsapp.com/EsBTIhmD5Jd8poIDWYbsZ5"
         target="_blank"
+        className="
+          fixed bottom-6 right-6
+          w-14 h-14
+          bg-black dark:bg-white
+          rounded-full
+          flex items-center justify-center
+          shadow-lg
+          hover:scale-110
+          transition-transform duration-300
+          z-50
+          animate-pulse
+        "
       >
         {/* WhatsApp Logo */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
-          height="30"
-          width="30"
-          className="fill-[#25D366]" // WhatsApp green
+          height="28"
+          width="28"
+          className="fill-white dark:fill-black"
         >
           <path d="M380.9 97.1C339-14.1 260.1-3.4 197.8 10.5 121.2 28.7 60.9 108.7 51.3 187.6c-9.4 80.1 25.7 152.4 111.4 194.6L70.3 464l90.2-27.2c43.7 23.8 91.1 36 139.5 35.4 106.7-.6 193.2-86.3 193.7-193 1.2-65.4-34.3-127.4-114.9-172.1zM224 374.1c-38.6 0-76.4-13-105.5-36.7l-7.5-5.5-53.1 16 17.8-51.9-5.5-7.5C58.9 263.8 46 226 46 187.5 46 105 118.5 32 200.2 32 278.6 32 346 94.3 344.9 173c-.9 75.6-60.7 142.8-120.9 142.8zm66.5-107.1c-3.6-1.8-21.3-10.5-24.6-11.7-3.3-1.2-5.7-1.8-8.1 1.8-2.3 3.6-9 11.7-11 14.1-2 2.3-4 2.6-7.6.9-3.6-1.8-15-5.5-28.6-17.6-10.6-9.4-17.8-21-19.9-24.6-2-3.6-.2-5.6 1.6-7.4 1.6-1.6 3.6-4 5.4-6 1.8-2 2.4-3.6 3.6-6 1.2-2.3.6-4.3-.3-6-1-1.8-8.1-19.5-11.1-26.8-2.9-7.2-5.9-6.2-8.1-6.3-2-.1-4.3-.1-6.6-.1-2.3 0-6 1-9.1 4.3-3 3.3-11.4 11.1-11.4 27.1s11.7 31.5 13.3 33.6c1.6 2 22.9 35 55.7 49 7.8 3.4 13.9 5.4 18.7 6.9 7.9 2.3 15.1 2 20.8 1.2 6.3-.9 21.3-8.7 24.3-17.2 2.9-8.5 2.9-15.7 2-17.1-.9-1.4-3.3-2.3-6.9-4z" />
         </svg>
@@ -19,4 +34,5 @@ const SourceCodeLink = () => {
     </>
   );
 };
+
 export default SourceCodeLink;

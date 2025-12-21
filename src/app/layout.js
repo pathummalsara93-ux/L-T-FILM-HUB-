@@ -1,10 +1,6 @@
-"use client";
-
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Providers } from "./components/Providers";
-import Loading from "./loading";
-import { useEffect, useState } from "react";
+import ClientLayout from "./client-layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,24 +29,10 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
-  const [showLoader, setShowLoader] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowLoader(false);
-    }, 2000); // ⬅️ loader time (ms)
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className + " overflow-hidden"}>
-        {showLoader ? (
-          <Loading />
-        ) : (
-          <Providers>{children}</Providers>
-        )}
+      <body className={inter.className}>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

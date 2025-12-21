@@ -2,7 +2,7 @@ const SourceCodeLink = () => {
   return (
     <>
       <a
-        href="https://github.com/chatforall"
+        href="https://chat.whatsapp.com/EsBTIhmD5Jd8poIDWYbsZ5"
         target="_blank"
       >
         {/* WhatsApp Logo */}

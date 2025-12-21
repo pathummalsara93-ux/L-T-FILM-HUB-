@@ -18,17 +18,15 @@ const SendMessage = ({ scroll }) => {
     document.addEventListener("keydown", handleKDown);
   }, []);
 
-  const debouncedSendMessage =  debounce(async (message) => {
-    // event.preventDefault();
-    if (message.trim() === "") {
-      alert("Message cannot be empty!");
-      return;
-    }
+  const debouncedSendMessage = debounce(async (message) => {
+    if (message.trim() === "") return;
+
     await addDoc(collection(db, messages_db), {
       text: message,
       name: "User",
       createdAt: serverTimestamp(),
     });
+
     setMessage("");
     setTimeout(() => {
       scroll.current.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -37,7 +35,7 @@ const SendMessage = ({ scroll }) => {
 
   const sendMessage = (event) => {
     event.preventDefault();
-    debouncedSendMessage(message); // Use the debounced function
+    debouncedSendMessage(message);
   };
 
   const handleKeyDown = (event) => {
@@ -51,23 +49,54 @@ const SendMessage = ({ scroll }) => {
 
   return (
     <form
-      onSubmit={(event) => sendMessage(event)}
-      className="fixed bottom-0 w-full bg-[#e6e9ef] dark:bg-[#181825] px-7 py-5 flex"
+      onSubmit={sendMessage}
       autoComplete="off"
+      className="
+        fixed bottom-0 w-full
+        px-4 py-4
+        flex items-center gap-3
+        bg-white/70 dark:bg-[#11111b]/80
+        backdrop-blur-xl
+        border-t border-white/30 dark:border-white/10
+        shadow-[0_-10px_30px_rgba(0,0,0,0.15)]
+      "
     >
+      {/* Input */}
       <textarea
-        id="messageInput"
-        name="messageInput"
-        className="h-10 p-2.5 rounded-l-xl font-sans border-none grow bg-[#313244] dark:bg-[#fab387] text-[#eff1f5] dark:text-[#11111b] text-base leading-none resize-none placeholder:text-[#eff1f5] dark:placeholder:text-[#1e1e2e] focus:ring focus:ring-[#1e66f5] dark:focus:ring-[#a6e3a1] focus:duration-1000 focus:outline-none ring-inset"
-        placeholder="type message"
+        ref={inputRef}
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={handleKeyDown}
-        ref={inputRef}
+        placeholder="Type a message…"
+        className="
+          grow h-11 px-4 py-2
+          rounded-2xl
+          resize-none
+          bg-white/80 dark:bg-[#1e1e2e]
+          text-[#1e1e2e] dark:text-[#cdd6f4]
+          placeholder:text-[#6c7086] dark:placeholder:text-[#7f849c]
+          focus:outline-none
+          focus:ring-2 focus:ring-[#89b4fa] dark:focus:ring-[#a6e3a1]
+          transition-all duration-300
+          shadow-inner
+        "
       />
+
+      {/* Send Button */}
       <button
-        className="w-16 h-10 px-2.5 py-1 rounded-r-xl text-[#eff1f5] dark:text-[#1e1e2e] bg-[#1e66f5] dark:bg-[#a6e3a1] font-semibold"
         type="submit"
+        className="
+          h-11 w-11
+          rounded-2xl
+          flex items-center justify-center
+          text-white text-xl
+          bg-gradient-to-br from-indigo-500 via-sky-400 to-cyan-400
+          shadow-lg
+          transition-all duration-150
+          hover:scale-105
+          active:scale-95
+          active:shadow-inner
+        "
       >
         ➤
       </button>

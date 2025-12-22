@@ -7,65 +7,40 @@ const Message = ({ message }) => {
 
   if (!message?.createdAt) return null;
 
-  const handleCopy = () => {
+  const copy = () => {
     navigator.clipboard.writeText(message.text);
     setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
+    setTimeout(() => setCopied(false), 1800);
   };
 
   return (
-    <div className="my-2 w-full md:w-3/4 lg:w-2/3">
-      <div
-        className="
-          relative
-          rounded-xl
-          bg-[#e6e9ef] dark:bg-[#1e1e2e]
-          px-4 py-2.5
-          text-sm
-          shadow-sm
-        "
-      >
-        {/* Message text */}
-        <p className="whitespace-pre-wrap break-words text-[#4c4f69] dark:text-[#cdd6f4]">
-          {message.text}
-        </p>
+    <div className="my-3 w-full md:w-3/4 xl:w-3/5 animate-reveal">
+      <div className="relative overflow-hidden rounded-2xl bg-[#0e0e1a] text-[#eaeaf0] shadow-lg">
+        
+        {/* animated glow layer */}
+        <span className="absolute inset-0 glow-mask" />
 
-        {/* Footer */}
-        <div className="mt-1 flex items-center justify-end gap-2 text-[11px] text-gray-500">
-          <span>
-            {format(
-              new Date(message.createdAt.seconds * 1000),
-              "hh:mm a"
-            )}
-          </span>
+        {/* content */}
+        <div className="relative p-4">
+          <p className="text-sm leading-relaxed tracking-wide reveal-text">
+            {message.text}
+          </p>
 
-          <button
-            onClick={handleCopy}
-            className="hover:opacity-70 transition"
-            title="Copy"
-          >
-            {copied ? (
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="text-green-500"
-              >
-                <path d="M18.063 5.674a1 1 0 0 1 .263 1.39l-7.5 11a1 1 0 0 1-1.533.143l-4.5-4.5a1 1 0 1 1 1.414-1.414l3.647 3.646 6.82-10.002a1 1 0 0 1 1.39-.263Z" />
-              </svg>
-            ) : (
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="text-gray-400"
-              >
-                <path d="M8 7a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V7Zm-2 3H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h7v-2H5v-7h1v-2Z" />
-              </svg>
-            )}
-          </button>
+          <div className="mt-3 flex justify-between items-center text-[11px] opacity-60">
+            <span>
+              {format(
+                new Date(message.createdAt.seconds * 1000),
+                "MMM d · HH:mm"
+              )}
+            </span>
+
+            <button
+              onClick={copy}
+              className="hover:opacity-80 transition"
+            >
+              {copied ? "✓ saved" : "save"}
+            </button>
+          </div>
         </div>
       </div>
     </div>

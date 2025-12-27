@@ -20,27 +20,6 @@
   }
 }
 
-/* ❄️ Snowflakes */
-.snowflake {
-  position: fixed;
-  top: -10px;
-  color: white;
-  font-size: 1em;
-  user-select: none;
-  pointer-events: none;
-  animation: snowFall linear infinite;
-  z-index: 9999;
-  opacity: 0.8;
-}
-
-@keyframes snowFall {
-  0% {
-    transform: translateY(0) translateX(0);
-  }
-  100% {
-    transform: translateY(110vh) translateX(20px);
-  }
-}
 
 /* ☀️ Light Mode */
 @media (prefers-color-scheme: light) {

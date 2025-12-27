@@ -5,17 +5,41 @@ import ThemeSwitch from "./components/ThemeSwitch";
 
 export default function Home() {
   return (
-    <div
-      className="
-        relative min-h-screen w-full overflow-hidden
-        bg-gradient-to-br from-[#cdd6f4] via-[#e0e7ff] to-[#fdfcff]
-        dark:from-[#0f0f1a] dark:via-[#11111b] dark:to-[#1a1b26]
-        transition-colors duration-700
-      "
-    >
-      {/* Soft floating glow */}
-      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-purple-400/30 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-400/20 rounded-full blur-[120px] animate-pulse" />
+    <div className="relative w-full min-h-screen bg-[#11111b] text-[#cdd6f4] overflow-hidden transition-colors duration-700">
+
+      {/* 🔥 Frame-bound floating glow */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        {/* Circular Frame */}
+        <div className="absolute w-[500px] h-[500px] border-4 border-purple-400 rounded-full" />
+
+        {/* Floating Glow 1 */}
+        <div className="absolute w-64 h-64 bg-pink-400/40 rounded-full blur-3xl animate-float-fire"></div>
+        {/* Floating Glow 2 */}
+        <div className="absolute w-48 h-48 bg-cyan-400/30 rounded-full blur-2xl animate-float-fire2"></div>
+
+        <style jsx>{`
+          @keyframes float-fire {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50px, -20px); }
+            50% { transform: translate(-30px, 30px); }
+            75% { transform: translate(20px, -10px); }
+            100% { transform: translate(0, 0); }
+          }
+          @keyframes float-fire2 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-40px, 30px); }
+            50% { transform: translate(20px, -25px); }
+            75% { transform: translate(-10px, 10px); }
+            100% { transform: translate(0, 0); }
+          }
+          .animate-float-fire {
+            animation: float-fire 8s ease-in-out infinite;
+          }
+          .animate-float-fire2 {
+            animation: float-fire2 10s ease-in-out infinite;
+          }
+        `}</style>
+      </div>
 
       {/* Header */}
       <div className="relative z-10 m-3 p-[2px] rounded-2xl bg-gradient-to-r from-indigo-500 via-sky-400 to-indigo-500 animate-gradient">

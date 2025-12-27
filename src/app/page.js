@@ -2,7 +2,6 @@
 import ChatBox, { DeleteMessages } from "./components/ChatBox";
 import SourceCodeLink from "./components/SourceCodeLink";
 import ThemeSwitch from "./components/ThemeSwitch";
-import Snow from "./components/Snow"; // ❄️ add this
 
 export default function Home() {
   return (

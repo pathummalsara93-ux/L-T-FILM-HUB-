@@ -15,7 +15,7 @@ export const metadata = {
     { name: "Sameemul Haque" },
     {
       name: "Sameemul Haque",
-      url: "https://sameem.dev/",
+      url: "https://pathum.dev/",
     },
   ],
 };

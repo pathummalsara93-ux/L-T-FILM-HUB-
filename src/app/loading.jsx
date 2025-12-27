@@ -7,19 +7,19 @@ export default function Loading() {
   useEffect(() => {
     let value = 0;
     const interval = setInterval(() => {
-      value += Math.random() * 2 + 0.5; // slower, smoother
+      value += 0.5; // smooth, deterministic
       if (value >= 100) {
         value = 100;
         clearInterval(interval);
       }
       setProgress(Math.floor(value));
-    }, 150); // slower update for longer experience
-
+    }, 100); // small interval for smooth increase
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#020617] via-[#020617] to-black text-white">
+
       {/* Floating ambient lights */}
       <div className="absolute w-[700px] h-[700px] bg-purple-500/10 rounded-full blur-3xl animate-floating1"></div>
       <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-cyan-400/10 rounded-full blur-3xl animate-floating2"></div>
@@ -79,19 +79,19 @@ export default function Loading() {
 
       {/* Animations */}
       <style jsx>{`
-        /* Outer Glow Ring Animation */
+        /* Outer Glow Ring Animation (slow) */
         .animate-glowRing {
-          animation: glowRing 3s ease-in-out infinite;
+          animation: glowRing 6s ease-in-out infinite;
         }
         @keyframes glowRing {
           0%, 100% { transform: scale(1); opacity: 0.6; }
           50% { transform: scale(1.15); opacity: 1; }
         }
 
-        /* Floating ambient lights */
-        .animate-floating1 { animation: float1 12s ease-in-out infinite; }
-        .animate-floating2 { animation: float2 15s ease-in-out infinite; }
-        .animate-floating3 { animation: float3 18s ease-in-out infinite; }
+        /* Floating ambient lights (slow cinematic) */
+        .animate-floating1 { animation: float1 20s ease-in-out infinite; }
+        .animate-floating2 { animation: float2 25s ease-in-out infinite; animation-delay: 2s; }
+        .animate-floating3 { animation: float3 30s ease-in-out infinite; animation-delay: 4s; }
 
         @keyframes float1 {
           0%, 100% { transform: translate(0, 0); }

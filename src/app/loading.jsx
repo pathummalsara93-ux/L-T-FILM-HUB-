@@ -7,38 +7,31 @@ export default function Loading() {
   useEffect(() => {
     let value = 0;
     const interval = setInterval(() => {
-      value += Math.random() * 6 + 1; // smoother + premium
+      value += Math.random() * 2 + 0.5; // slower, smoother
       if (value >= 100) {
         value = 100;
         clearInterval(interval);
       }
       setProgress(Math.floor(value));
-    }, 110);
+    }, 150); // slower update for longer experience
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div
-      className="
-        fixed inset-0 z-[9999]
-        flex flex-col items-center justify-center
-        overflow-hidden
-        bg-gradient-to-br from-[#020617] via-[#020617] to-black
-        text-white
-      "
-    >
-      {/* Animated background glow */}
-      <div className="absolute w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-3xl animate-pulse-slow"></div>
-      <div className="absolute w-[400px] h-[400px] bg-cyan-400/10 rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
+    <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#020617] via-[#020617] to-black text-white">
+      {/* Floating ambient lights */}
+      <div className="absolute w-[700px] h-[700px] bg-purple-500/10 rounded-full blur-3xl animate-floating1"></div>
+      <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-cyan-400/10 rounded-full blur-3xl animate-floating2"></div>
+      <div className="absolute -bottom-32 left-20 w-[400px] h-[400px] bg-pink-400/10 rounded-full blur-3xl animate-floating3"></div>
 
-      {/* Loader */}
-      <div className="relative w-36 h-36 flex items-center justify-center">
+      {/* Main Loader */}
+      <div className="relative w-44 h-44 flex items-center justify-center">
         {/* Outer glow ring */}
-        <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-2xl animate-glow"></div>
+        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-400 to-cyan-400 blur-2xl animate-glowRing"></div>
 
         {/* SVG Progress Ring */}
-        <svg className="w-36 h-36 -rotate-90">
+        <svg className="w-44 h-44 -rotate-90">
           <circle
             cx="72"
             cy="72"
@@ -62,98 +55,91 @@ export default function Loading() {
           <defs>
             <linearGradient id="grad" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#38bdf8" />
-              <stop offset="100%" stopColor="#6366f1" />
+              <stop offset="50%" stopColor="#a78bfa" />
+              <stop offset="100%" stopColor="#f472b6" />
             </linearGradient>
           </defs>
         </svg>
 
         {/* Percentage */}
-        <span className="absolute text-3xl font-bold text-blue-400 animate-fade-in">
+        <span className="absolute text-4xl font-bold text-gradient animate-fade-in">
           {progress}%
         </span>
       </div>
 
-      {/* Animated Text */}
-      <p className="mt-8 text-xs uppercase tracking-[0.4em] text-blue-300 shimmer">
+      {/* Animated Loading Text */}
+      <p className="mt-10 text-sm uppercase tracking-[0.4em] text-gradient shimmer">
         Loading LT Movie Hub
       </p>
 
       {/* Subtitle */}
       <span className="mt-2 text-[10px] text-white/40 tracking-widest animate-fade-in-slow">
-        please wait
+        Please wait...
       </span>
 
-      {/* Custom Animations */}
+      {/* Animations */}
       <style jsx>{`
-        .animate-glow {
-          animation: glow 2.5s ease-in-out infinite;
+        /* Outer Glow Ring Animation */
+        .animate-glowRing {
+          animation: glowRing 3s ease-in-out infinite;
+        }
+        @keyframes glowRing {
+          0%, 100% { transform: scale(1); opacity: 0.6; }
+          50% { transform: scale(1.15); opacity: 1; }
         }
 
-        @keyframes glow {
-          0% {
-            transform: scale(1);
-            opacity: 0.6;
-          }
-          50% {
-            transform: scale(1.15);
-            opacity: 1;
-          }
-          100% {
-            transform: scale(1);
-            opacity: 0.6;
-          }
+        /* Floating ambient lights */
+        .animate-floating1 { animation: float1 12s ease-in-out infinite; }
+        .animate-floating2 { animation: float2 15s ease-in-out infinite; }
+        .animate-floating3 { animation: float3 18s ease-in-out infinite; }
+
+        @keyframes float1 {
+          0%, 100% { transform: translate(0, 0); }
+          50% { transform: translate(50px, -30px); }
+        }
+        @keyframes float2 {
+          0%, 100% { transform: translate(0, 0); }
+          50% { transform: translate(-40px, 25px); }
+        }
+        @keyframes float3 {
+          0%, 100% { transform: translate(0, 0); }
+          50% { transform: translate(30px, -40px); }
         }
 
-        .animate-pulse-slow {
-          animation: pulseSlow 6s ease-in-out infinite;
-        }
-
-        @keyframes pulseSlow {
-          0%,
-          100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.2);
-          }
-        }
-
+        /* Gradient shimmer text */
         .shimmer {
           background: linear-gradient(
             90deg,
             #60a5fa 0%,
             #e0f2fe 50%,
-            #60a5fa 100%
+            #f472b6 100%
           );
           background-size: 200% auto;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          animation: shimmer 2.5s linear infinite;
+          animation: shimmer 3s linear infinite;
         }
-
         @keyframes shimmer {
-          to {
-            background-position: 200% center;
-          }
+          to { background-position: 200% center; }
         }
 
+        /* Fade In */
         .animate-fade-in {
           animation: fadeIn 1s ease-out forwards;
         }
-
         .animate-fade-in-slow {
           animation: fadeIn 2s ease-out forwards;
         }
-
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(6px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(6px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Gradient text helper */
+        .text-gradient {
+          background: linear-gradient(90deg, #38bdf8, #a78bfa, #f472b6);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
       `}</style>
     </div>

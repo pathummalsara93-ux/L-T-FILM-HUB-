@@ -6,6 +6,7 @@
 :root {
   --primary: 99, 102, 241; /* indigo */
   --secondary: 56, 189, 248; /* sky */
+  --accent: 255, 105, 180; /* pink accent */
   --bg-dark: 10, 10, 15;
   --bg-light: 245, 247, 250;
   --text-light: 255, 255, 255;
@@ -20,7 +21,6 @@
   }
 }
 
-
 /* ☀️ Light Mode */
 @media (prefers-color-scheme: light) {
   :root {
@@ -34,22 +34,32 @@ body {
   min-height: 100vh;
   color: rgb(var(--foreground));
   background:
-    radial-gradient(circle at top left, rgba(99,102,241,0.15), transparent 40%),
-    radial-gradient(circle at bottom right, rgba(56,189,248,0.15), transparent 40%),
+    radial-gradient(circle at top left, rgba(var(--primary),0.15), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(var(--secondary),0.15), transparent 30%),
     rgb(var(--background));
   font-family: "Inter", system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
-/* ✨ Glow Card / Container */
+/* ✨ Premium Glow Card */
 .glow-box {
   position: relative;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(16px);
-  border-radius: 16px;
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 24px;
+  padding: 28px;
   box-shadow:
-    0 0 20px rgba(99,102,241,0.25),
-    inset 0 0 0 1px rgba(255,255,255,0.08);
+    0 8px 40px rgba(var(--primary), 0.3),
+    inset 0 0 0 1px rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glow-box:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 60px rgba(var(--primary), 0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.15);
 }
 
 .glow-box::before {
@@ -59,11 +69,11 @@ body {
   border-radius: inherit;
   background: linear-gradient(
     120deg,
-    rgba(99,102,241,0.8),
-    rgba(56,189,248,0.8),
-    rgba(99,102,241,0.8)
+    rgba(var(--primary),0.85),
+    rgba(var(--secondary),0.85),
+    rgba(var(--accent),0.85)
   );
-  filter: blur(12px);
+  filter: blur(16px);
   opacity: 0.6;
   z-index: -1;
 }
@@ -72,39 +82,75 @@ body {
 a {
   text-decoration: none;
   color: rgb(var(--secondary));
-  transition: all 0.2s ease;
+  font-weight: 600;
+  transition: all 0.25s ease;
 }
 a:hover {
-  opacity: 0.75;
+  opacity: 0.8;
+  transform: scale(1.02);
 }
 
-/* 🚀 3D Message Button */
+/* 🚀 3D Premium Button */
 .btn-3d {
   position: relative;
-  padding: 14px 28px;
-  font-weight: 600;
+  padding: 16px 32px;
+  font-weight: 700;
   color: white;
-  border-radius: 14px;
+  border-radius: 18px;
   background: linear-gradient(
     135deg,
-    rgb(99,102,241),
-    rgb(56,189,248)
+    rgb(var(--primary)),
+    rgb(var(--secondary)),
+    rgb(var(--accent))
   );
   box-shadow:
-    0 8px 0 rgba(30, 41, 59, 0.9),
-    0 15px 30px rgba(99,102,241,0.45);
-  transition: all 0.15s ease-in-out;
+    0 10px 0 rgba(30, 41, 59, 0.9),
+    0 20px 50px rgba(var(--primary),0.45);
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .btn-3d:hover {
-  transform: translateY(2px);
+  transform: translateY(-2px) scale(1.02);
   box-shadow:
-    0 6px 0 rgba(30, 41, 59, 0.9),
-    0 10px 25px rgba(56,189,248,0.55);
+    0 8px 0 rgba(30, 41, 59, 0.9),
+    0 25px 60px rgba(var(--secondary),0.55);
 }
 
 .btn-3d:active {
-  transform: translateY(6px);
+  transform: translateY(4px) scale(0.98);
   box-shadow:
     0 2px 0 rgba(30, 41, 59, 0.9);
+}
+
+/* ✨ Premium Neon Text */
+.text-neon {
+  color: rgb(var(--primary));
+  text-shadow:
+    0 0 4px rgb(var(--primary)),
+    0 0 8px rgb(var(--secondary)),
+    0 0 12px rgb(var(--accent));
+  transition: all 0.3s ease;
+}
+.text-neon:hover {
+  text-shadow:
+    0 0 6px rgb(var(--primary)),
+    0 0 12px rgb(var(--secondary)),
+    0 0 18px rgb(var(--accent));
+}
+
+/* ⚡ Optional subtle floating lights */
+.floating-light {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(40px, -20px); }
+  100% { transform: translate(0, 0); }
 }

@@ -17,6 +17,9 @@ export default function Home() {
         {/* Floating Glow 2 */}
         <div className="absolute w-48 h-48 bg-cyan-400/30 rounded-full blur-2xl animate-float-fire2"></div>
 
+        {/* Flickering overlay */}
+        <div className="absolute inset-0 bg-white/5 animate-flicker rounded-full pointer-events-none" />
+
         <style jsx>{`
           @keyframes float-fire {
             0% { transform: translate(0, 0); }
@@ -32,11 +35,18 @@ export default function Home() {
             75% { transform: translate(-10px, 10px); }
             100% { transform: translate(0, 0); }
           }
+          @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+          }
           .animate-float-fire {
             animation: float-fire 8s ease-in-out infinite;
           }
           .animate-float-fire2 {
             animation: float-fire2 10s ease-in-out infinite;
+          }
+          .animate-flicker {
+            animation: flicker 1.5s linear infinite;
           }
         `}</style>
       </div>

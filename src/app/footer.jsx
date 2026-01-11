@@ -1,5 +1,3 @@
-
-
 const FooterSections = () => {
   return (
     <div className="footer-sections mt-6 px-4 md:px-8">
@@ -83,7 +81,6 @@ const FooterSections = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Owner */}
           <div className="admin-card owner p-4 bg-gray-800/70 dark:bg-gray-900/70 rounded-xl shadow-lg flex justify-between items-center">
             <div className="flex items-center gap-3">
               <div className="admin-icon text-3xl">👤</div>
@@ -102,7 +99,6 @@ const FooterSections = () => {
             </a>
           </div>
 
-          {/* Admin */}
           <div className="admin-card p-4 bg-gray-800/70 dark:bg-gray-900/70 rounded-xl shadow-lg flex justify-between items-center">
             <div className="flex items-center gap-3">
               <div className="admin-icon text-3xl">👮</div>
@@ -123,7 +119,6 @@ const FooterSections = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="mt-8 text-center text-sm text-gray-400">
         <p>© 2026 LT MOVIE HUB. All Rights Reserved.</p>
       </footer>
@@ -131,4 +126,4 @@ const FooterSections = () => {
   );
 };
 
-export default FooterSections;export default FooterSections;
+export default FooterSections;
